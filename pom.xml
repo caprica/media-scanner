@@ -48,7 +48,6 @@
     
     <properties>
         <guava.version>16.0</guava.version>
-        <junit.version>4.11</junit.version>
     </properties>
 
     <build>

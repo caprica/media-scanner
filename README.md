@@ -29,8 +29,8 @@ the file extension - but if you add your own implementation of a title provider
 to your application classpath, it will be loaded by the standard JDK
 `ServiceLoader` mechanism and used instead.
 
-You could provide an implementation that uses string splitting, regular-
-expression parsing, grammar parsing, or whatever else you can think of.
+You could provide an implementation that uses string splitting,
+regular-expression parsing, grammar parsing, or whatever else you can think of.
 
 Similarly, the optional collection of meta data for each media item is also
 pluggable.

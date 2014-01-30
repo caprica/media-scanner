@@ -36,8 +36,8 @@ Similarly, the optional collection of meta data for each media item is also
 pluggable.
 
 By default no meta data is provided, but if you add your own implementation of
-a meta data provider to yuor application classpath, it will be loaded by the
+a meta data provider to your application classpath, it will be loaded by the
 standard JDK `ServiceLoader` mechanism and used instead. In fact, you can have
 any number of such implementations and they will all be tried in turn. In this
 way you can have a meta data provider for movie details and a separate one for
-artwork.
+artwork, for example.

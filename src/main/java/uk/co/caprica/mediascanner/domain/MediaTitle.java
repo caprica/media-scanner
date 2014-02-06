@@ -19,6 +19,7 @@
 
 package uk.co.caprica.mediascanner.domain;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.base.Objects;
 import com.google.common.base.Optional;
 import com.google.common.collect.ComparisonChain;
@@ -63,6 +64,7 @@ public final class MediaTitle implements Comparable<MediaTitle> {
      *
      * @return
      */
+    @JsonProperty
     public String title() {
         return title;
     }
@@ -72,6 +74,7 @@ public final class MediaTitle implements Comparable<MediaTitle> {
      *
      * @return
      */
+    @JsonProperty
     public Integer year() {
         return year.orNull();
     }

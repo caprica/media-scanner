@@ -48,6 +48,7 @@
     
     <properties>
         <guava.version>16.0</guava.version>
+        <jackson.version>[2.1.0,)</jackson.version>
     </properties>
 
     <build>
@@ -83,6 +84,16 @@
     </build>
 
     <dependencies>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>

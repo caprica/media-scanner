@@ -22,14 +22,9 @@ package uk.co.caprica.mediascanner.domain;
 import java.nio.file.Path;
 import java.util.List;
 
-import uk.co.caprica.mediascanner.domain.json.MetaSerializer;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.google.common.base.Objects;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.ComparisonChain;
-import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 
 /**
@@ -66,36 +61,6 @@ public final class MediaEntry implements Comparable<MediaEntry> {
     /**
      *
      *
-     * @return
-     */
-    public Path file() {
-        return file;
-    }
-
-    /**
-     *
-     *
-     * @return
-     */
-    @JsonProperty
-    public MediaTitle title() {
-        return title;
-    }
-
-    /**
-     *
-     *
-     * @return
-     */
-    @JsonProperty
-    @JsonSerialize(using=MetaSerializer.class)
-    public Multimap<String, Object> meta() {
-        return ImmutableMultimap.copyOf(meta);
-    }
-
-    /**
-     *
-     *
      * @param key
      * @param type
      * @return
@@ -125,6 +90,24 @@ public final class MediaEntry implements Comparable<MediaEntry> {
      */
     public void put(String key, Object value) {
         meta.put(key, value);
+    }
+
+    /**
+     *
+     *
+     * @return
+     */
+    public Path file() {
+        return file;
+    }
+
+    /**
+     *
+     *
+     * @return
+     */
+    public MediaTitle title() {
+        return title;
     }
 
     @Override

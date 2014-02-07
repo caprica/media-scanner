@@ -22,7 +22,6 @@ package uk.co.caprica.mediascanner.domain;
 import java.util.Collection;
 import java.util.Iterator;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.base.Objects;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Iterators;
@@ -51,7 +50,6 @@ public final class MediaSet implements Iterable<MediaEntry> {
      *
      * @return
      */
-    @JsonProperty
     public Collection<MediaEntry> entries() {
         return entries;
     }

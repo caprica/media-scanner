@@ -18,7 +18,7 @@
     
     <groupId>uk.co.caprica</groupId>
     <artifactId>media-scanner</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1-SNAPSHOT</version>
 
     <name>media-scanner</name>
     <description>Scan directories recursively for media, with pluggable title and meta-data parsing.</description>
@@ -66,7 +66,7 @@
         <connection>scm:git:git@github.com:caprica/media-scanner.git</connection>
         <developerConnection>scm:git:git@github.com:caprica/media-scanner.git</developerConnection>
         <url>git@github.com:caprica/media-scanner.git</url>
-        <tag>media-scanner-1.0.0</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <distributionManagement>

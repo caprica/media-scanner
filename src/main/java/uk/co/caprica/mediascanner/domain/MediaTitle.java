@@ -19,9 +19,12 @@
 
 package uk.co.caprica.mediascanner.domain;
 
+import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 import com.google.common.base.Optional;
 import com.google.common.collect.ComparisonChain;
+
+import static com.google.common.base.MoreObjects.toStringHelper;
 
 /**
  *
@@ -100,7 +103,7 @@ public final class MediaTitle implements Comparable<MediaTitle> {
 
     @Override
     public String toString() {
-        return Objects.toStringHelper(this)
+        return toStringHelper(this)
             .add("title", title)
             .add("year" , year )
             .toString();

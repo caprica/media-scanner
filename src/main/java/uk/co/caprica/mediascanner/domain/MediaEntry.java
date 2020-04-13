@@ -22,10 +22,13 @@ package uk.co.caprica.mediascanner.domain;
 import java.nio.file.Path;
 import java.util.List;
 
+import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.ComparisonChain;
 import com.google.common.collect.Multimap;
+
+import static com.google.common.base.MoreObjects.toStringHelper;
 
 /**
  *
@@ -51,7 +54,7 @@ public final class MediaEntry implements Comparable<MediaEntry> {
      *
      *
      * @param file
-     * @param meta
+     * @param title
      */
     public MediaEntry(Path file, MediaTitle title) {
         this.file = file;
@@ -77,7 +80,6 @@ public final class MediaEntry implements Comparable<MediaEntry> {
      * @param type
      * @return
      */
-    @SuppressWarnings("unchecked")
     public <T> List<T> values(String key, Class<T> type) {
         return (List<T>) meta.get(key);
     }
@@ -136,7 +138,7 @@ public final class MediaEntry implements Comparable<MediaEntry> {
 
     @Override
     public String toString() {
-        return Objects.toStringHelper(this)
+        return toStringHelper(this)
             .add("file" , file )
             .add("title", title)
             .add("meta" , meta )

@@ -39,6 +39,8 @@ import uk.co.caprica.mediascanner.title.TitleProvider;
 
 import com.google.common.collect.ImmutableList;
 
+// FIXME this probably should e.g. scan meta in FILESYSTEM order - e.g. to minimise impact of switching network drives all the time
+
 /**
  *
  */

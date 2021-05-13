@@ -34,6 +34,8 @@ import uk.co.caprica.mediascanner.domain.MediaEntry;
 import uk.co.caprica.mediascanner.domain.MediaSet;
 import uk.co.caprica.mediascanner.domain.MediaTitle;
 import uk.co.caprica.mediascanner.meta.MetaProvider;
+import uk.co.caprica.mediascanner.progress.MediaScannerProgress;
+import uk.co.caprica.mediascanner.progress.MediaScannerProgressAdapter;
 import uk.co.caprica.mediascanner.title.DefaultTitleProvider;
 import uk.co.caprica.mediascanner.title.TitleProvider;
 
@@ -87,6 +89,11 @@ public final class MediaScanner {
      *
      */
     private Object context;
+
+    /**
+     *
+     */
+    private MediaScannerProgress progress = new MediaScannerProgressAdapter();
 
     /**
      *
@@ -184,6 +191,17 @@ public final class MediaScanner {
     /**
      *
      *
+     * @param progress
+     * @return
+     */
+    public MediaScanner progress(MediaScannerProgress progress) {
+        this.progress = progress;
+        return this;
+    }
+
+    /**
+     *
+     *
      * @return
      * @throws IOException
      */
@@ -194,7 +212,9 @@ public final class MediaScanner {
             List<Path> files = new MediaTreeVisitor(directory, followLinks, matching).visit().result();
             for (Path file : files) {
                 try {
-                    entries.add(new MediaEntry(file, getTitle(file)));
+                    MediaEntry entry = new MediaEntry(file, getTitle(file));
+                    entries.add(entry);
+                    progress.found(entry);
                 }
                 catch (RuntimeException e) {
                     e.printStackTrace();
@@ -214,11 +234,15 @@ public final class MediaScanner {
      * @return
      */
     public MediaScanner collectMeta() {
+        int i = 0;
         for (MediaEntry entry : mediaSet) {
+            i++;
+            progress.beforeGetMeta(i, mediaSet.size(), entry);
             Iterator<MetaProvider> it = metaProviderServiceLoader.iterator();
             while (it.hasNext()) {
                 it.next().addMeta(entry, context);
             }
+            progress.afterGetMeta(i, mediaSet.size(), entry);
         }
         return this;
     }

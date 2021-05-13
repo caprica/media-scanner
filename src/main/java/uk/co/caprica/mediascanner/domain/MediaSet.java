@@ -20,14 +20,19 @@
 package uk.co.caprica.mediascanner.domain;
 
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
+import java.util.stream.Collectors;
 
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
+import com.google.common.collect.Comparators;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Iterators;
 
 import static com.google.common.base.MoreObjects.toStringHelper;
+import static java.util.stream.Collectors.toList;
 
 /**
  *
@@ -49,12 +54,21 @@ public final class MediaSet implements Iterable<MediaEntry> {
     }
 
     /**
-     *
+     * Get the collection of media entries, in default (title) order.
      *
      * @return
      */
     public Collection<MediaEntry> entries() {
         return entries;
+    }
+
+    /**
+     * Get the collection of media entries, in full path-name order.
+     *
+     * @return
+     */
+    public Collection<MediaEntry> entriesInPathOrder() {
+        return entries.stream().sorted(Comparator.comparing(MediaEntry::file)).collect(toList());
     }
 
     /**

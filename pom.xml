@@ -78,7 +78,7 @@
 
     <properties>
         <doclint>none</doclint>
-        <guava.version>33.4.0-jre</guava.version>
+        <guava.version>33.7.1-jre</guava.version>
         <java.version>11</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
